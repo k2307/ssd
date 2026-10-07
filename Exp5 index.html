@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Secure Web Application</title>
+
+    <!-- Basic Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self'">
+
+</head>
+
+<body>
+
+    <h1>Secure Login</h1>
+
+    <form id="loginForm">
+
+        <label for="username">Username:</label>
+        <input
+            type="text"
+            id="username"
+            maxlength="30"
+            required
+            autocomplete="username">
+
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input
+            type="password"
+            id="password"
+            maxlength="64"
+            required
+            autocomplete="current-password">
+
+        <br><br>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <p id="message"></p>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
