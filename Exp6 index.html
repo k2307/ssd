@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Secure Coding Demo</title>
+</head>
+<body>
+
+    <h2>Secure User Registration</h2>
+
+    <form id="registrationForm">
+        <label>Username:</label>
+        <input type="text" id="username" required>
+        <br><br>
+
+        <label>Email:</label>
+        <input type="email" id="email" required>
+        <br><br>
+
+        <label>Password:</label>
+        <input type="password" id="password" required>
+        <br><br>
+
+        <label>Age:</label>
+        <input type="number" id="age" min="1" max="120" required>
+        <br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        document.getElementById("registrationForm").onsubmit = function(event) {
+            event.preventDefault();
+
+            let username = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let age = document.getElementById("age").value;
+            let message = document.getElementById("message");
+
+
+            //Limit input length for buffer overflow.
+            if (username.length > 30) {
+                message.textContent = "Username is too long.";
+                return;
+            }
+
+            //Enforce minimum password length
+            if (password.length < 8) {
+                message.textContent = "Password must contain at least 8 characters.";
+                return;
+            }
+
+            //input validation - Validate age and other fields
+            if (age < 1 || age > 120) {
+                message.textContent = "Invalid age.";
+                return;
+            }
+
+            message.textContent = "Registration successful.";    //secure from XSS attack as no "innerHTML" is used.
+        };
+    </script>
+
+</body>
+</html>
